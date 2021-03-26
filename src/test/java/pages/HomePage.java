@@ -16,12 +16,15 @@ public class HomePage {
   @Step("Открыть главную страницу")
   public void openHomePage() {
     open("/");
-    submitCityBtn.click();
   }
 
-  @Step("Найти товары по запросу: {text}")
-  public void findProductsByText(String text) {
+  @Step("Ввести в строку поиска текс: {text}")
+  public void fillSearchInput(String text) {
     searchInput.val(text);
+  }
+
+  @Step("Кликнуть по кнопке 'Найти' в строке поиска")
+  public void clickByFindBtn() {
     searchBtn.click();
   }
 
