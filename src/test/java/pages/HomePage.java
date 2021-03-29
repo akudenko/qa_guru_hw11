@@ -9,23 +9,28 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class HomePage {
 
-  SelenideElement submitCityBtn = $(".header__tower-panel a");
   SelenideElement searchInput = $("#search");
   SelenideElement searchBtn = $(byText("Найти"));
+  SelenideElement firstSearchTip = $(".searchbar__tips div a");
 
   @Step("Открыть главную страницу")
   public void openHomePage() {
     open("/");
   }
 
-  @Step("Ввести в строку поиска текс: {text}")
+  @Step("Ввести в строку поиска текст: {text}")
   public void fillSearchInput(String text) {
     searchInput.val(text);
   }
 
-  @Step("Кликнуть по кнопке 'Найти' в строке поиска")
+  @Step("Кликнуть по кнопке 'Найти'")
   public void clickByFindBtn() {
     searchBtn.click();
+  }
+
+  @Step("Кликнуть по первому элементу подсказки поиска")
+  public void clickByFirstSearchTip() {
+    firstSearchTip.click();
   }
 
 }

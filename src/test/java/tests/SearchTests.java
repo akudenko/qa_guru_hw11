@@ -25,4 +25,45 @@ public class SearchTests extends TestBase {
     homePage.clickByFindBtn();
     searchResultPage.checkQtyOfFoundedProducts();
   }
+
+  @Test
+  @DisplayName("Отфильтровать найденные результаты")
+  @Tag("web")
+  void filteringTest() {
+    homePage.openHomePage();
+    homePage.fillSearchInput("анальгин");
+    homePage.clickByFindBtn();
+    searchResultPage.checkResultTitle("«анальгин»");
+    int before = searchResultPage.getQtyOfFoundedProducts();
+    searchResultPage.pickAnalginBrandFilter();
+    int after = searchResultPage.getQtyOfFoundedProducts();
+    searchResultPage.checkQtyOfProducts(before, after);
+  }
+
+  @Test
+  @DisplayName("Открыть первый продукт из списка")
+  @Tag("web")
+  void openProductFromResultPageTest() {
+    homePage.openHomePage();
+    homePage.fillSearchInput("анальгин");
+    homePage.clickByFindBtn();
+    searchResultPage.checkResultTitle("«анальгин»");
+    String name = searchResultPage.getFirstTitleOfProductsList();
+    searchResultPage.openFirstProduct();
+    productPage.checkTitle(name);
+  }
+
+  @Test
+  @DisplayName("Добавить первый продукт из поиска в коризну")
+  @Tag("web")
+  void addProductTest() {
+    homePage.openHomePage();
+    homePage.fillSearchInput("анальгин");
+    homePage.clickByFindBtn();
+    searchResultPage.checkResultTitle("«анальгин»");
+    String name = searchResultPage.getFirstTitleOfProductsList();
+    searchResultPage.addToCart();
+    searchResultPage.openCart();
+    cartPage.checkTitleOfProduct(name);
+  }
 }
