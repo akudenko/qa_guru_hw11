@@ -2,8 +2,6 @@
 
 ## Search tests for https://rozetka.com.ua/ 
 
-____
-
 ### Stack: 
 - Java
 - Selenide
