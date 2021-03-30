@@ -8,7 +8,7 @@ repositories {
     mavenCentral()
 }
 
-group 'app.pure'
+group 'app.rozetka'
 version '1.0'
 
 def allureVersion = "2.13.8",
