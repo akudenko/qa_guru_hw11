@@ -9,7 +9,7 @@
 - Gradle
 - Jenkins
 - Selenoid
-- Allure reports
+- Allure report
 - Notifications: Telegram, Slack
 
 ____
