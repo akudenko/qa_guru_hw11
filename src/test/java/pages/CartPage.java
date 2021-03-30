@@ -9,12 +9,10 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class CartPage {
 
-  SelenideElement titleOfProduct = $(".cart-info__name a");
-  SelenideElement cartTitle = $(".container h1");
+  SelenideElement titleOfProduct = $(".cart-list__item a");
 
-  @Step("Проверить название продукта: {text}")
+  @Step("Cart should have product: {text}")
   public void checkTitleOfProduct(String text) {
-    cartTitle.shouldBe(visible);
     titleOfProduct.shouldHave(text(text));
   }
 }

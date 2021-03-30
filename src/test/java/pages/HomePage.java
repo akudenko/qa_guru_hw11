@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
@@ -9,21 +10,21 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class HomePage {
 
-  SelenideElement searchInput = $("#search");
-  SelenideElement searchBtn = $(byText("Найти"));
+  SelenideElement searchInput = $("[name='search']");
+  SelenideElement searchBtn = $(byText("Знайти"));
   SelenideElement firstSearchTip = $(".searchbar__tips div a");
 
-  @Step("Открыть главную страницу")
+  @Step("Open the home page")
   public void openHomePage() {
     open("/");
   }
 
-  @Step("Ввести в строку поиска текст: {text}")
+  @Step("Fill a request in the search: {text}")
   public void fillSearchInput(String text) {
     searchInput.val(text);
   }
 
-  @Step("Кликнуть по кнопке 'Найти'")
+  @Step("Click on the search button")
   public void clickByFindBtn() {
     searchBtn.click();
   }

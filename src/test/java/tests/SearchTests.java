@@ -6,61 +6,63 @@ import org.junit.jupiter.api.Test;
 
 public class SearchTests extends TestBase {
 
+  private static String SEARCH_REQUEST = "macbook pro m1";
+
   @Test
-  @DisplayName("Проверка заголовка на странице результатов поиска")
+  @DisplayName("Check the search title on the result page")
   @Tag("web")
   void searchTitleTest() {
     homePage.openHomePage();
-    homePage.fillSearchInput("анальгин");
+    homePage.fillSearchInput(SEARCH_REQUEST);
     homePage.clickByFindBtn();
-    searchResultPage.checkResultTitle("«анальгин»");
+    searchResultPage.checkResultTitle(SEARCH_REQUEST);
   }
 
   @Test
-  @DisplayName("Страница результатов поиска содержит товары")
+  @DisplayName("Result page should contain products")
   @Tag("web")
   void searchResultContainProducts() {
     homePage.openHomePage();
-    homePage.fillSearchInput("анальгин");
+    homePage.fillSearchInput(SEARCH_REQUEST);
     homePage.clickByFindBtn();
     searchResultPage.checkQtyOfFoundedProducts();
   }
 
   @Test
-  @DisplayName("Отфильтровать найденные результаты")
+  @DisplayName("Filter products by brand 'Rozetka' on the result page")
   @Tag("web")
-  void filteringTest() {
+  void filterTest() {
     homePage.openHomePage();
-    homePage.fillSearchInput("анальгин");
+    homePage.fillSearchInput(SEARCH_REQUEST);
     homePage.clickByFindBtn();
-    searchResultPage.checkResultTitle("«анальгин»");
+    searchResultPage.checkResultTitle(SEARCH_REQUEST);
     int before = searchResultPage.getQtyOfFoundedProducts();
-    searchResultPage.pickAnalginBrandFilter();
+    searchResultPage.filteringByRozetkaBrand();
     int after = searchResultPage.getQtyOfFoundedProducts();
     searchResultPage.checkQtyOfProducts(before, after);
   }
 
   @Test
-  @DisplayName("Открыть первый продукт из списка")
+  @DisplayName("Products can be opened from the result page")
   @Tag("web")
   void openProductFromResultPageTest() {
     homePage.openHomePage();
-    homePage.fillSearchInput("анальгин");
+    homePage.fillSearchInput(SEARCH_REQUEST);
     homePage.clickByFindBtn();
-    searchResultPage.checkResultTitle("«анальгин»");
+    searchResultPage.checkResultTitle(SEARCH_REQUEST);
     String name = searchResultPage.getFirstTitleOfProductsList();
     searchResultPage.openFirstProduct();
     productPage.checkTitle(name);
   }
 
   @Test
-  @DisplayName("Добавить первый продукт из поиска в коризну")
+  @DisplayName("Products can be added to the cart from the result page")
   @Tag("web")
-  void addProductTest() {
+  void addToCartTest() {
     homePage.openHomePage();
-    homePage.fillSearchInput("анальгин");
+    homePage.fillSearchInput(SEARCH_REQUEST);
     homePage.clickByFindBtn();
-    searchResultPage.checkResultTitle("«анальгин»");
+    searchResultPage.checkResultTitle(SEARCH_REQUEST);
     String name = searchResultPage.getFirstTitleOfProductsList();
     searchResultPage.addToCart();
     searchResultPage.openCart();

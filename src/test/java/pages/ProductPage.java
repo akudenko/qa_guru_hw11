@@ -8,9 +8,9 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class ProductPage {
 
-  SelenideElement title = $(".container h1");
+  SelenideElement title = $(".product__heading h1");
 
-  @Step("Проверить название товара: {text}")
+  @Step("Product should have title: {text}")
   public void checkTitle(String text) {
     title.shouldHave(text(text));
   }
