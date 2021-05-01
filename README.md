@@ -1,4 +1,4 @@
-# qa_guru_hw11
+# rozetka_search_ui_tests
 
 ## Search tests for https://rozetka.com.ua/ 
 
